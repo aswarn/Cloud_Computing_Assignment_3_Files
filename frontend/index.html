@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Album</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>My Photo Album</h1>
+
+    <section>
+        <h2>Search Photos</h2>
+
+        <input
+            type="text"
+            id="searchQuery"
+            placeholder="Try: show me photos with dogs"
+        />
+
+        <button onclick="searchPhotos()">Search</button>
+
+        <div id="searchResults"></div>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Upload Photos</h2>
+
+        <input
+            type="file"
+            id="photoFile"
+            accept="image/jpeg,image/png"
+        />
+
+        <br><br>
+
+        <input
+            type="text"
+            id="customLabels"
+            placeholder="Custom labels: Sam, Sally, vacation"
+        />
+
+        <button onclick="uploadPhoto()">Upload Photo</button>
+
+        <p id="uploadStatus"></p>
+    </section>
+
+    <!-- API Gateway SDK dependencies -->
+    <script src="sdk/lib/axios/dist/axios.standalone.js"></script>
+
+    <script src="sdk/lib/CryptoJS/rollups/crypto-js.js"></script>
+    <script src="sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script src="sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script src="sdk/lib/CryptoJS/components/enc-base64.js"></script>
+
+    <script src="sdk/lib/url-template/url-template.js"></script>
+
+    <script src="sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script src="sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script src="sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script src="sdk/lib/apiGatewayCore/utils.js"></script>
+
+    <!-- Generated API Gateway client -->
+    <script src="sdk/apigClient.js"></script>
+
+    <!-- Your application code -->
+    <script src="app.js"></script>
+
+</body>
+</html>
