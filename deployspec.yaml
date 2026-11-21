@@ -1,0 +1,15 @@
+
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Deploying index-photos"
+      - aws lambda update-function-code --function-name index-photos --zip-file fileb://dist/index-photos.zip --region us-east-1
+      - aws lambda wait function-updated-v2 --function-name index-photos --region us-east-1
+
+      - echo "Deploying LF2-search-photos"
+      - aws lambda update-function-code --function-name LF2-search-photos --zip-file fileb://dist/search-photos.zip --region us-east-1
+      - aws lambda wait function-updated-v2 --function-name LF2-search-photos --region us-east-1
+
+      - echo "Both Lambda functions deployed successfully."

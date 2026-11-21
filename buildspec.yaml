@@ -1,0 +1,26 @@
+
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+
+  build:
+    commands:
+      - mkdir -p dist/index-photos dist/search-photos
+
+      - pip install -r lambda_function/index_photos/requirements.txt -t dist/index-photos
+      - cp lambda_function/index_photos/lambda_function.py dist/index-photos/
+
+      - pip install -r lambda_function/search_photos/requirements.txt -t dist/search-photos
+      - cp lambda_function/search_photos/lambda_function.py dist/search-photos/
+
+      - cd dist/index-photos && zip -r ../index-photos.zip . && cd ../..
+      - cd dist/search-photos && zip -r ../search-photos.zip . && cd ../..
+
+artifacts:
+  files:
+    - dist/index-photos.zip
+    - dist/search-photos.zip
+    - deployspec.yaml
